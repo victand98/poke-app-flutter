@@ -20,5 +20,16 @@ class PokemonProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  set setPokemonId(int id) {
+    pokemonId = id;
+  }
+
+  void addPokemon(int id) async {
+    final pokemon = await PokemonService.getPokemon(id);
+    _pokemons.add(pokemon);
+
+    notifyListeners();
+  }
+
   List<Pokemon> get pokemons => _pokemons;
 }

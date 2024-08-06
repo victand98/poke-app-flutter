@@ -14,6 +14,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final pokemonProvider = Provider.of<PokemonProvider>(context);
+    int pokemonId = pokemonProvider.pokemonId;
 
     return Scaffold(
       appBar: AppBar(
@@ -30,6 +31,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   pokemon: pokemonProvider.pokemons[index],
                 );
               }),
+      floatingActionButton: CustomFloatingActionButton(
+        icon: Icons.add,
+        onPressed: () {
+          pokemonProvider.addPokemon(pokemonId);
+          pokemonProvider.setPokemonId = pokemonId + 1;
+          setState(() {});
+        },
+      ),
     );
   }
 }
