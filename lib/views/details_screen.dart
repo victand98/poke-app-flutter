@@ -42,7 +42,16 @@ class DetailsScreen extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          buildStatRow(pokemon.stats)
+          buildStatRow(pokemon.stats),
+          const SizedBox(height: 20),
+          const Text(
+            "Types",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          PokemonDetailsBody(pokemon: pokemon),
         ]),
       ),
     );
