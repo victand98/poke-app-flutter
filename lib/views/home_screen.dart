@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:poke_app/providers/providers.dart';
+import 'package:poke_app/utils/utils.dart';
 import 'package:poke_app/widgets/widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -11,6 +12,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    askPermissions().then((value) => null);
+  }
+
   @override
   Widget build(BuildContext context) {
     final pokemonProvider = Provider.of<PokemonProvider>(context);
