@@ -34,4 +34,14 @@ class FileSystemUtils {
 
     return folderDirectory.listSync().map((event) => event.path).toList();
   }
+
+  static Future<File> loadImageFromStorage(String imagePath) async {
+    File imageFile = File(imagePath);
+
+    if (imageFile.existsSync()) {
+      return imageFile;
+    } else {
+      return File('assets/img/default.jpeg');
+    }
+  }
 }
