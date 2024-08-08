@@ -8,14 +8,20 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Pokemon pokemon =
-        ModalRoute.of(context)!.settings.arguments as Pokemon;
+    final arguments =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+
+    final Pokemon pokemon = arguments['pokemon'];
+    final List<String> captures = arguments['captures'];
 
     return Scaffold(
       appBar: AppBar(title: Text(capitalize(pokemon.name))),
       body: SingleChildScrollView(
         child: Column(children: [
-          PokemonHeader(pokemon: pokemon),
+          PokemonHeader(
+            pokemon: pokemon,
+            captures: captures,
+          ),
           Text(
             capitalize(pokemon.name),
             style: const TextStyle(

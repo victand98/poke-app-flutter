@@ -5,11 +5,17 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:poke_app/models/models.dart';
 import 'package:poke_app/utils/utils.dart';
+import 'package:poke_app/widgets/widgets.dart';
 
 class PokemonHeader extends StatelessWidget {
   final Pokemon pokemon;
+  final List<String> captures;
 
-  const PokemonHeader({super.key, required this.pokemon});
+  const PokemonHeader({
+    super.key,
+    required this.pokemon,
+    required this.captures,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +26,14 @@ class PokemonHeader extends StatelessWidget {
       child: Stack(
         children: [
           Center(
-            child: Image(
-              image: NetworkImage(pokemon.sprites.frontDefault),
-              fit: BoxFit.cover,
-              height: 160,
-              width: 180,
-            ),
+            child: captures.isEmpty
+                ? Image(
+                    image: NetworkImage(pokemon.sprites.frontDefault),
+                    fit: BoxFit.fill,
+                    height: 160,
+                    width: 180,
+                  )
+                : PokemonImagesSlider(imagesPath: captures),
           ),
           Positioned(
             top: 0,
