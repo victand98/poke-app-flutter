@@ -4,8 +4,13 @@ import 'package:poke_app/utils/utils.dart';
 
 class PokemonCard extends StatelessWidget {
   final Pokemon pokemon;
+  final List<String> captures;
 
-  const PokemonCard({super.key, required this.pokemon});
+  const PokemonCard({
+    super.key,
+    required this.pokemon,
+    required this.captures,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +30,12 @@ class PokemonCard extends StatelessWidget {
         ),
       ),
       onTap: () {
-        Navigator.pushNamed(context, '/detailsScreen', arguments: pokemon);
+        Map<String, dynamic> arguments = {
+          'pokemon': pokemon,
+          'captures': captures,
+        };
+
+        Navigator.pushNamed(context, '/detailsScreen', arguments: arguments);
       },
     );
   }

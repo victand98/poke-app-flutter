@@ -41,7 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemCount: pokemonProvider.pokemons.length,
                     itemBuilder: (context, index) {
                       return PokemonCard(
-                          pokemon: pokemonProvider.pokemons[index]);
+                        pokemon: pokemonProvider.pokemons[index],
+                        captures: const [],
+                      );
                     },
                   ),
                   const SizedBox(height: 30),
