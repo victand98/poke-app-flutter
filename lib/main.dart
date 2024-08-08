@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
         '/splashScreen': (context) => const SplashScreen(),
         '/homeScreen': (context) => const HomeScreen(),
         '/detailsScreen': (context) => const DetailsScreen(),
+        '/myPokemonsScreen': (context) => const MyPokemonsScreen(),
       },
     );
   }
