@@ -32,13 +32,26 @@ class _HomeScreenState extends State<HomeScreen> {
           ? const Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.builder(
-              itemCount: pokemonProvider.pokemons.length,
-              itemBuilder: (context, index) {
-                return PokemonCard(
-                  pokemon: pokemonProvider.pokemons[index],
-                );
-              }),
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: pokemonProvider.pokemons.length,
+                    itemBuilder: (context, index) {
+                      return PokemonCard(
+                          pokemon: pokemonProvider.pokemons[index]);
+                    },
+                  ),
+                  const SizedBox(height: 30),
+                  MyPokemonsButton(
+                      onTap: () =>
+                          Navigator.pushNamed(context, "/myPokemonsScreen")),
+                  const SizedBox(height: 50),
+                ],
+              ),
+            ),
       floatingActionButton: CustomFloatingActionButton(
         icon: Icons.add,
         onPressed: () {
