@@ -43,6 +43,10 @@ class PokemonHeader extends StatelessWidget {
               color: Colors.white,
               iconSize: 50,
               onPressed: () async {
+                bool isCameraPermissionGranted =
+                    await checkAndAskCameraPermission();
+                if (!isCameraPermissionGranted) return;
+
                 final picker = ImagePicker();
                 final XFile? pickedFile = await picker.pickImage(
                   source: ImageSource.camera,

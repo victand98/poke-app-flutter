@@ -35,7 +35,7 @@ class MyPokemonsViewModel extends ChangeNotifier {
         pokemonsCaptures.add(pokemonCaptures);
       }
     } catch (e) {
-      return;
+      debugPrint(e.toString());
     }
 
     loadingPokemonsCaptures = false;
