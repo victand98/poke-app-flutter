@@ -32,6 +32,8 @@ class _MyPokemonsBodyState extends State<MyPokemonsBody> {
                     return PokemonCard(
                       pokemon:
                           myPokemonsViewModel.pokemonsCaptures[index].pokemon,
+                      captures:
+                          myPokemonsViewModel.pokemonsCaptures[index].captures,
                     );
                   },
                 ),
